@@ -3,11 +3,13 @@ import java.util.Objects;
 public class Card {
     private String rank;
     private String color;
+    private int strong;
 
 
-    public Card(String rank, String color) {
+    public Card(String rank, String color , int strong) {
         this.rank = rank;
         this.color = color;
+        this.strong = strong;
     }
 
     @Override
@@ -27,5 +29,13 @@ public class Card {
     @Override
     public String toString() {
         return rank + color;
+    }
+
+    public static boolean battle(Card attack, Card defense){
+        return false;
+    }
+
+    public void setStrong(int strong) {
+        this.strong = strong;
     }
 }
