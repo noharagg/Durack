@@ -28,7 +28,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return rank + color;
+        return rank + color ;
     }
 
     public static boolean battle(Card attack, Card defense){

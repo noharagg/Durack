@@ -1,62 +1,47 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+
+    private static boolean stepIsBot = false;
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         Desk desk = new Desk();
         Hand handBot = new Hand(desk);
         Hand handPlayer = new Hand(desk);
         Hand handTable = new Hand();
         Card trumpCard = desk.getTrumpCard();
-        int select;
         while(true){
             System.out.println();
-            System.out.println("TrumpCard : "  + trumpCard + " Card in desk : " + desk.getList().size() +  "  ");
+            System.out.println("TrumpCard : "  + trumpCard + " Card in desk : " + desk.getSize() +  "  ");
             printSymbol();
             printHand(handBot);
+            System.out.print(" TABLE :  ");
             printHand(handTable);
             printHand(handPlayer);
             printSymbol();
-            System.out.println("Number card (1-6) : ");
-            select = sc.nextInt();
+            System.out.println("Number card  : ");
+            if (stepIsBot){
+                numberCard(3);
+            } else if (handPlayer.getCardList().size() != 0){
+                handTable.getCardList().add(handPlayer.getCardList().remove(numberCard(handPlayer.getCardList().size()) - 1));
+
+            }else {
+                stepIsBot = true;
+                for(int i = handPlayer.getCardList().size() ; i < 6 ; i++) {
+                    takeCardsFromDesk(handPlayer,desk);
+                    desk.setSize(desk.getSize() - 1);
+                }
+                handTable.getCardList().clear();
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-//        for (Card card :desk.getList()
-//             ) {
-//            System.out.println(card.toString());
-//        }
-//
-//        System.out.println();
-//
-//        for (Card card :handBot.getCardList()
-//        ) {
-//            System.out.println(card.toString());
-//        }
-//        System.out.println();
-//
-//        for (Card card :handPlayer.getCardList()
-//        ) {
-//            System.out.println(card.toString());
-//        }
-
     }
+
     public static void printHand(Hand hand){
         for (Card card: hand.getCardList()
              ) {
             System.out.print(card.toString() + " " );
         }
+        System.out.println();
         System.out.println();
     }
 
@@ -67,4 +52,26 @@ public class Main {
         }
         System.out.println();
     }
+
+    public static int numberCard(int size){
+        int select = 0;
+        Scanner sc = new Scanner(System.in);
+        if(sc.hasNextInt() ){
+            select = sc.nextInt();
+            if(select > size || select <1){
+                System.out.println("Incorrect input");
+                return numberCard(size);
+            }
+        }else{
+            System.out.println("Incorrect input");
+            return numberCard(size);
+        }
+        return select;
+    }
+
+    public static void takeCardsFromDesk(Hand hand, Desk desk){
+        hand.getCardList().add(desk.getList().remove((int)(Math.random() * desk.getSize() - 1)));
+
+    }
+
 }

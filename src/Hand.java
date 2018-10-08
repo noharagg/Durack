@@ -10,12 +10,13 @@ public class Hand {
     }
 
     public Hand(Desk desk){
-        if(Desk.size < SIZE){
+        if(desk.getSize() < SIZE){
             return;
         }
         cardList = new ArrayList<>(6);
         for(int i = 0; i < SIZE; i++){
-            cardList.add(desk.getList().remove((int)(Math.random() * Desk.size--)));
+            cardList.add(desk.getList().remove((int)(Math.random() * desk.getSize())));
+            desk.setSize(desk.getSize() - 1);
         }
     }
 

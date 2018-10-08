@@ -4,7 +4,7 @@ import java.util.List;
 public class Desk {
     private List<Card> list;
     private Card trumpCard;
-    public static int size = 36;
+    private int size = 36;
     public Desk() {
         list = new ArrayList<>();
         String[] ranks = {"6", "7", "8", "9", "10", "J", "Q", "K", "T"};
@@ -28,5 +28,13 @@ public class Desk {
 
     public Card getTrumpCard() {
         return trumpCard;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }
