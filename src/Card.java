@@ -38,4 +38,16 @@ public class Card {
     public void setStrong(int strong) {
         this.strong = strong;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public int getStrong() {
+        return strong;
+    }
 }

@@ -22,7 +22,7 @@ public class Desk {
     }
 
     private void searchTrumpCard(){
-        trumpCard = list.remove((int)(Math.random()* 37));
+        trumpCard = list.remove((int)(Math.random()* 36));
         size--;
     }
 
