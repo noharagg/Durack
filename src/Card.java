@@ -35,10 +35,6 @@ public class Card {
         return false;
     }
 
-    public void setStrong(int strong) {
-        this.strong = strong;
-    }
-
     public String getColor() {
         return color;
     }
@@ -49,5 +45,9 @@ public class Card {
 
     public int getStrong() {
         return strong;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 }

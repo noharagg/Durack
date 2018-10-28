@@ -7,7 +7,7 @@ public class Desk {
     private int size = 36;
     public Desk() {
         list = new ArrayList<>();
-        String[] ranks = {"6", "7", "8", "9", "10", "J", "Q", "K", "T"};
+        String[] ranks = {"6", "7", "8", "9", "10", "J", "Q", "K", "A"};
         for (int i = 0 ; i < ranks.length; i++){
             list.add(new Card(ranks[i],"♠", i));
             list.add(new Card(ranks[i],"♣", i));
